@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { CustomResponse } from '../interface/custom-response';
+import { Server } from '../interface/server';
 
 
 @Injectable({
@@ -22,6 +23,30 @@ export class ServerService {
       tap(console.log),
       catchError(this.handleError)
     );
+
+
+  save$ = (server: Server) => <Observable<CustomResponse>>
+    this.http.post<CustomResponse>(`${this.apiURL}/servers/save`, server)
+      .pipe(
+        tap(console.log),
+        catchError(this.handleError)
+      );
+
+
+  ping$ = (ipAddress: string) => <Observable<CustomResponse>>
+    this.http.get<CustomResponse>(`${this.apiURL}/servers/ping/${ipAddress}`)
+      .pipe(
+        tap(console.log),
+        catchError(this.handleError)
+      );
+
+
+  delete$ = (serverId: number) => <Observable<CustomResponse>>
+    this.http.delete<CustomResponse>(`${this.apiURL}/servers/delete/${serverId}`)
+      .pipe(
+        tap(console.log),
+        catchError(this.handleError)
+      );
 
 
   handleError(handleError: any): Observable<never> {
