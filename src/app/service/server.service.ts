@@ -58,10 +58,13 @@ export class ServerService {
               servers: response.data.servers.filter(server => server.status === status)
             }
           }
-        )
+        );
+        suscriber.complete();
       }
-
-      );
+    ).pipe(
+      tap(console.log),
+      catchError(this.handleError)
+    );
 
 
   delete$ = (serverId: number) => <Observable<CustomResponse>>
