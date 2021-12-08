@@ -20,11 +20,11 @@ export class ServerService {
 
 
   servers$ = <Observable<CustomResponse>>
-  this.http.get<CustomResponse>(`${this.apiURL}/servers/list`)
-    .pipe(
-      tap(console.log),
-      catchError(this.handleError)
-    );
+    this.http.get<CustomResponse>(`${this.apiURL}/servers/list`)
+      .pipe(
+        tap(console.log),
+        catchError(this.handleError)
+      );
 
 
   save$ = (server: Server) => <Observable<CustomResponse>>
