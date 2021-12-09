@@ -11,7 +11,7 @@ import { Status } from '../enum/status.enum';
   providedIn: 'root',
 })
 export class ServerService {
-  private readonly apiURL = 'http://localhost:8080';
+  private readonly apiURL = 'http://localhost:8080/api';
 
   constructor(private http: HttpClient) {}
 
