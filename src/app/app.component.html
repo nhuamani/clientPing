@@ -28,14 +28,14 @@
             
             <br />
 
-            <ng-container>
-                <ng-container>
+            <ng-container *ngIf="(appState$ | async) as appState" [ngSwitch]="appState.dataState">
+                <ng-container *ngSwitchCase="DataState.LOADING_STATE">
                     <div class="col-md-12 single-note-item text-center">
                         <div class="spinner-border text-info" role="status"></div>
                     </div>
                 </ng-container>
 
-                <ng-container>
+                <ng-container *ngSwitchCase="DataState.LOADED_STATE">
                     <table class="table table-striped table-hover" id="servers">
                         <thead>
                             <tr>
@@ -73,7 +73,7 @@
                     </table>
                 </ng-container>
 
-                <ng-container>
+                <ng-container *ngSwitchCase="DataState.ERROR_STATE">
                     <div class="alert-danger">error</div>
                 </ng-container>
             </ng-container>
