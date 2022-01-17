@@ -78,7 +78,7 @@
                 </ng-container>
 
                 <ng-container *ngSwitchCase="DataState.ERROR_STATE">
-                    <div class="alert-danger">error</div>
+                    <div class="alert alert-danger" role="alert">{{ appState.error }}</div>
                 </ng-container>
             </ng-container>
         </div>
