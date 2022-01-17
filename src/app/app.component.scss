@@ -9,6 +9,18 @@ body {
     font-size: .6rem;
 }
 
+.ping {
+    cursor: pointer;
+    &:hover {
+        color: #138496;
+        transition: all .5ms ease-in;
+    }
+}
+
+.ping > .fa-spinner.fa-spin {
+    font-size: 1.5rem;
+}
+
 .table-responsive {
     margin: 30px 0;
 }

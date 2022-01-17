@@ -62,10 +62,10 @@
                                     </span>
                                 </td>
                                 <td>
-                                    <a href="">
-                                        <i class="material-icons" title="Ping server">&#xe328;</i>
-                                        <i class="fa fa-spinner fa-spin"></i>
-                                    </a>
+                                    <span class="ping">
+                                        <i *ngIf="(filterStatus$ | async) === '' || (filterStatus$ | async) !== server.ipAddress" class="material-icons" title="Ping server">&#xe328;</i>
+                                        <i *ngIf="(filterStatus$ | async) !== server.ipAddress" class="fa fa-spinner fa-spin"></i>
+                                    </span>
                                 </td>
                                 <td>
                                     <a class="delete" data-toggle="modal">
