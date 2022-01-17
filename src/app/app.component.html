@@ -49,14 +49,18 @@
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody *ngFor="let server of appState.appData.data.servers; let i = index">
                             <tr>
-                                <td><img src="/assets/images/server1.png" width="40" height="40" role="presentation" /></td>
-                                <td>IP Address</td>
-                                <td>Name</td>
-                                <td>Memory</td>
-                                <td>Type</td>
-                                <td><span class="badge badge-success">Success</span></td>
+                                <td><img [src]="server.imageUrl" [alt]="server.name" width="40" height="40"/></td>
+                                <td>{{ server.ipAddress }}</td>
+                                <td>{{ server.name}}</td>
+                                <td>{{ server.memory}}</td>
+                                <td>{{ server.type }}</td>
+                                <td>
+                                    <span class="badge" [ngClass]="[server.status === Status.SERVER_UP ? 'badge-success' : 'badge-danger']">
+                                        {{ server.status === Status.SERVER_UP ? 'SERVER UP' : 'SERVER DOWN' }}
+                                    </span>
+                                </td>
                                 <td>
                                     <a href="">
                                         <i class="material-icons" title="Ping server">&#xe328;</i>
