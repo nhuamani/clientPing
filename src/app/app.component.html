@@ -62,9 +62,9 @@
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="ping">
+                                    <span (click)="pingServer(server.ipAddress)" class="ping">
                                         <i *ngIf="(filterStatus$ | async) === '' || (filterStatus$ | async) !== server.ipAddress" class="material-icons" title="Ping server">&#xe328;</i>
-                                        <i *ngIf="(filterStatus$ | async) !== server.ipAddress" class="fa fa-spinner fa-spin"></i>
+                                        <i *ngIf="(filterStatus$ | async) === server.ipAddress" class="fa fa-spinner fa-spin"></i>
                                     </span>
                                 </td>
                                 <td>
