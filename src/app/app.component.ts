@@ -56,9 +56,10 @@ export class AppComponent implements OnInit {
       );
   }
 
-  
-  filterServers(event: any): void {
-    const status = event.target.value
+
+  filterServers(event: Event): void {
+    const value = (event.target as HTMLSelectElement).value;
+    const status: Status = Status[value];
     this.appState$ = this.serverService.filter$(status, this.dataSubject.value)
       .pipe(
         map((response) => {
