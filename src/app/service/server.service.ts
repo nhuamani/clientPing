@@ -21,12 +21,14 @@ export class ServerService {
       .pipe(tap(console.log), catchError(this.handleError))
   );
 
+
   save$ = (server: Server) =>
     <Observable<CustomResponse>>(
       this.http
         .post<CustomResponse>(`${this.apiURL}/servers/save`, server)
         .pipe(tap(console.log), catchError(this.handleError))
     );
+
 
   ping$ = (ipAddress: string) =>
     <Observable<CustomResponse>>(
@@ -35,7 +37,7 @@ export class ServerService {
         .pipe(tap(console.log), catchError(this.handleError))
     );
 
-  
+
   filter$ = (status: Status, response: CustomResponse) => <Observable<CustomResponse>>
     new Observable<CustomResponse>(
       (suscriber) => {
@@ -56,12 +58,14 @@ export class ServerService {
       suscriber.complete();
     }).pipe(tap(console.log), catchError(this.handleError));
 
+
   delete$ = (serverId: number) =>
     <Observable<CustomResponse>>(
       this.http
         .delete<CustomResponse>(`${this.apiURL}/servers/delete/${serverId}`)
         .pipe(tap(console.log), catchError(this.handleError))
     );
+
 
   private handleError(error: HttpErrorResponse): Observable<never> {
     console.log(error);
