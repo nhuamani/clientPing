@@ -41,7 +41,6 @@ export class ServerService {
   filter$ = (status: Status, response: CustomResponse) => <Observable<CustomResponse>>
     new Observable<CustomResponse>(
       (suscriber) => {
-        console.log(response);
         suscriber.next(
           status === Status.ALL
             ? { ...response, message: `Servers filtered by ${status} status` }
